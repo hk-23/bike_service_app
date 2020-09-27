@@ -38,7 +38,7 @@ class User(AbstractUser):
 	email = models.EmailField(unique=True)
 	first_name = models.CharField(max_length=35)
 	mobile = models.CharField(unique=True,max_length=10)
-	user_type_choice = ((1,'Owner'),(2,'Customer'))
+	user_type_choice = ((1,'Admin'),(2,'Staff'),(3,'Customer'))
 	user_type = models.PositiveSmallIntegerField(choices=user_type_choice)
 
 	objects = UserManager()

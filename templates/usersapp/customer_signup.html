@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load  crispy_forms_tags %}
+
+{% block content %}
+
+<section class="container">
+	<h2 class="text-center">customer signup form</h2>
+	<form class="form" method="POST" novalidate>
+		{% csrf_token %}
+
+		{{ form|crispy }}
+
+		<input type="submit" name="submit" class="btn btn-success">
+	</form>
+</section>
+
+{% endblock %}

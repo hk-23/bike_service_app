@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<section class="container table-responsive-sm">
+	<article class="container my-3">
+		<button data-toggle="collapse" data-target="#addserviceform" class="btn btn-success">Create A New Service</button>
+		<div class="collapse" id="addserviceform">
+			<form method="POST" class="form">
+				{% csrf_token %}
+				<div class="col-6">
+					{{ form|crispy }}
+				</div>
+				<input type="submit" name="submit" value="Add" class="btn btn-success">
+			</form>
+		</div>
+	</article>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>S.No</td>
+				<th>Service Name</td>
+				<th class="text-center">Options</td>
+			</tr>
+		</thead>
+		<tbody>
+			{% for i in myservices %}
+			<tr>
+				<td>{{ forloop.counter }}</td>
+				<td>{{ i.name }}</td>
+				<td class="text-center">
+					<a href="#" class="btn btn-danger">Delete</a>
+					<a href="#" class="btn btn-success">Edit</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</section>
+
+{% endblock %}
