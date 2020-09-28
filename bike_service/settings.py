@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'usersapp',
     'ownersapp',
+    'bookingsapp',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -112,7 +113,7 @@ AUTH_USER_MODEL = 'usersapp.User'
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 

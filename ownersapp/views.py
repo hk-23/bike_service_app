@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Services
+from .models import Service
 from .forms import *
 
 # Create your views here.
@@ -10,7 +10,7 @@ def admin_home(request):
 	return render(request,'ownersapp/admin_home.html')
 
 def myservices_view(request):
-	myservices = Services.objects.all()
+	myservices = Service.objects.all()
 	myForm = AddServiceForm(request.POST or None)
 	if myForm.is_valid():
 		print('its valid')
