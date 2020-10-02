@@ -1,0 +1,14 @@
+new_booking_email.html{% autoescape off %}
+Hey {{ user.get_full_name }}
+A New Booking has been made by one of your customers,
+
+Vist Admin Page To Get more booking details
+
+{{ protocol }}://{{ domain }}{% url 'admin-home' %}
+
+If clicking the link above doesn't work, please copy and paste the URL in a new browser
+window instead.
+
+Sincerely,
+The Hudson Sparklers
+{% endautoescape %}

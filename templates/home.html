@@ -3,8 +3,15 @@
 
 {% block content %}
 
-<section class="container text-center">
-	<h1>Home Page</h1>
+<section class="container-fluid text-center d-flex align-items-center" style="height: 90vh;">
+	<div class="row mx-auto">
+		<div class="col-md-12 text-center color-slateblue">
+			<h1 class="color-slateblue patua" style="font-size: 400%;">Hudson Sparklers</h1>
+			<h2 class="mb-3">Bike Service Station</h2>
+			<a href="{% url 'book-a-service' %}" class="btn btn-outline-slateblue mt-3 mx-2">Book Now</a>
+			<button class="btn btn-slateblue mt-3 mx-2">Get Started <i class="fas fa-bolt"></i> </button>
+		</div>
+	</div>
 </section>
 
 {% endblock %}

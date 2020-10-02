@@ -1,3 +1,4 @@
+import re
 from datetime import date,datetime
 from django import forms
 from .models import Booking
@@ -9,9 +10,16 @@ class BookingForm(forms.ModelForm):
 		queryset=Service.objects.all(),
 	)
 	service_on = forms.DateField(widget=forms.TextInput(attrs={'type':'date'}))
+	vehicle_no = forms.CharField(widget=forms.TextInput(attrs={'placeholder': "TN-37-AA-1234"}))
 	class Meta:
 		model = Booking
-		fields = ['brand','services','service_on']
+		fields = ['brand','vehicle_no','services','service_on']
+
+	def clean_vehicle_no(self):
+		vehicle_no = self.cleaned_data.get('vehicle_no').upper()
+		if not re.match("[A-Z]{2}-[0-9]{1,2}-[A-Z]{1,2}-[0-9]{1,4}$",vehicle_no):
+			raise forms.ValidationError('Please Enter in the correct format. Ex: TN-37-AA-1234')
+		return vehicle_no
 
 	def clean_service_on(self):
 		service_on = self.cleaned_data.get('service_on')

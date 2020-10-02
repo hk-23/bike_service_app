@@ -1,9 +1,61 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
-<section class="container">
-	<h2 class="text-center">Admin Home Page</h2>
+<section class="container-fluid">
+	<h2 class="text-center color-slateblue my-4">Admin Home Page</h2>
+
+	<article class="row mx-4 d-flex ">
+		<div class="card col-3 mx-5 my-4 ba-slateblue-s shadow-slateblue">
+			<div class="card-body d-flex align-items-center mx-n3">
+				<img src="{% static 'img/stat1.jpg' %}" class="card-img-top " style="width: 100%;">
+			</div>
+			<div class="card-footer mx-n3 text-center">
+				Dashboard
+			</div>
+		</div>
+		<div class="card link-card col-3 mx-5 my-4 ba-slateblue-s shadow-slateblue">
+			<div class="card-body d-flex align-items-center mx-n3">
+				<img src="{% static 'img/serv1.jpg' %}" class="card-img-top " style="width: 100%;">
+			</div>
+			<div class="card-footer mx-n3 text-center">
+				<a href="{% url 'myservices' %}" class="stretched-link">My Services</a>
+			</div>
+		</div>
+		<!-- <div class="card col-3 mx-5 my-4 shadow">
+			<div class="card-body mx-n3">
+				<img src="{% static 'img/settings.png' %}" class="card-img-top " style="width: 100%;">
+			</div>
+			<div class="card-footer mx-n3 text-center">
+				Current Bookings
+			</div>
+		</div> -->
+		<div class="card col-3 mx-5 my-4 ba-slateblue-s shadow-slateblue">
+			<div class="card-body  mx-n3">
+				<img src="{% static 'img/cl1.svg' %}" class="card-img-top " style="width: 100%;">
+			</div>
+			<div class="card-footer mx-n3 text-center">
+				<a href="{% url 'all-bookings' %}" class="stretched-link">All Bookings</a>
+			</div>
+		</div>
+		<div class="card col-3 mx-5 my-4 ba-slateblue-s shadow-slateblue">
+			<div class="card-body  mx-n3">
+				<img src="{% static 'img/staff.jpg' %}" class="card-img-top " style="width: 100%;">
+			</div>
+			<div class="card-footer mx-n3 text-center">
+				<a href="{% url 'staff-details' %}" class="stretched-link">Staff Details</a>
+			</div>
+		</div>
+		<div class="card col-3 mx-5 my-4 ba-slateblue-s shadow-slateblue">
+			<div class="card-body d-flex align-items-center mx-n3">
+				<img src="{% static 'img/customers.png' %}" class="card-img-top " style="width: 100%;">
+			</div>
+			<div class="card-footer mx-n3 text-center">
+				<a href="{% url 'customer-details' %}" class="stretched-link">Customer Details</a>
+			</div>
+		</div>
+	</article>
 </section>
 
 {% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<style type="text/css">
+	.clickable-row {
+		cursor: pointer;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+
+<section class="container">
+	<div class="row my-4">
+	<div class="col-6">
+		<h3 class="color-slateblue">Bookings</h3>
+	</div>
+	<div class="col-6">
+		<input class="form-control" id="table-search" type="text" placeholder="Search..">
+	</div>
+	</div>
+	<table class="table table-hover table-responsive-sm table-bordered">
+		<thead class="thead-dark">
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Vehicle No</th>
+				<th>Services</th>
+				<th>Amount</th>
+				<th class="text-center">Status</th>
+			</tr>
+		</thead>
+		<tbody id="allbookings">
+			{% for b in booking %}
+			<tr class="clickable-row" data-href="{% url 'edit-bookings' b.id %}">
+				<td>{{ forloop.counter }}</td>
+				<td>{{ b.cid.get_short_name|title }}</td>
+				<td>{{ b.vehicle_no }}</td>
+				<td>{% for s in b.services.all %} {{ s.name }} | {% endfor %}</td>
+				<td>{{ b.amount|default:"TBD" }}</td>
+				<td class="text-center"><span class="badge badge-pill
+					{% if b.status == 'delivered' %}
+						badge-success
+					{% elif b.status == 'ready' %}
+						badge-info
+					{% elif b.status == 'pending' %}
+						badge-warning
+					{% elif b.status == 'canceled' %}
+						badge-danger
+					{% endif %}
+				 p-2">{{ b.status|title }}</span></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</section>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.clickable-row').click(function(){
+			window.location = $(this).data('href')
+		});
+		$("#table-search").on("keyup", function() {
+			var value = $(this).val().toLowerCase();
+			$("#allbookings tr").filter(function() {
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		});
+	});
+</script>
+
+<!-- $("#container").on('click-row.bs.table', function (e, row, $element) {
+    window.location = $element.data('href');
+}); -->
+
+{% endblock %}

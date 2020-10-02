@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="container">
+	<div class="row my-4">
+		<div class="col-md-6">
+			<h2 class="color-slateblue text-center text-md-left">Customer Details</h2>
+		</div>
+		<div class="col-md-6">
+			<input type="text" id="table-search" placeholder="Search..." class="form-control">
+		</div>
+	</div>
+	<table>
+		<table class="table table-striped table-responsive-sm table-hover border">
+			<thead class="thead-dark">
+				<tr>
+					<th>SNo.</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+					<th>Mobile</th>
+				</tr>
+			</thead>
+			<tbody id="customer-details">
+				{% for c in customer %}
+				<tr>
+					<td>{{ forloop.counter }}</td>
+					<td>{{ c.first_name|title }}</td>
+					<td>{{ c.last_name|title }}</td>
+					<td>{{ c.email }}</td>
+					<td>+91 {{ c.mobile }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</table>
+</section>
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#table-search").on("keyup", function() {
+			var value = $(this).val().toLowerCase();
+			$("#customer-details tr").filter(function() {
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		});
+	});
+</script>
+
+{% endblock %}

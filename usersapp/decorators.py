@@ -9,10 +9,9 @@ def is_customer(function):
 				return function(request,*args,**kwargs)
 			else:
 				messages.info(request,'Please Login Using Customer Account')
-				return redirect('login')
+				return redirect(redirect('login').url+'?next='+request.path)
 		else:
-			messages.info(request,'Login To continue')
-			return redirect('login')
+			return redirect(redirect('login').url+'?next='+request.path)
 	wrap.__doc__ = function.__doc__
 	wrap.__name__ = function.__name__
 	return wrap
@@ -20,14 +19,14 @@ def is_customer(function):
 def is_staff(function):
 	def wrap(request,*args,**kwargs):
 		if request.user.is_authenticated:
-			if request.user.user_type == 2 and request.user.user_type ==1 :
+			if request.user.user_type == 2 or request.user.user_type ==1 :
 				return function(request,*args,**kwargs)
 			else:
 				messages.info(request,'Please Login Using Staff Account')
-				return redirect('login')
+				return redirect(redirect('login').url+'?next='+request.path)
 		else:
 			messages.info(request,'Login To continue')
-			return redirect('login')
+			return redirect(redirect('login').url+'?next='+request.path)
 	wrap.__doc__ = function.__doc__
 	wrap.__name__ = function.__name__
 	return wrap
@@ -39,10 +38,10 @@ def is_admin(function):
 				return function(request,*args,**kwargs)
 			else:
 				messages.info(request,'Please Login Using Admin Account')
-				return redirect('login')
+				return redirect(redirect('login').url+'?next='+request.path)
 		else:
 			messages.info(request,'Login To continue')
-			return redirect('login')
+			return redirect(redirect('login').url+'?next='+request.path)
 	wrap.__doc__ = function.__doc__
 	wrap.__name__ = function.__name__
 	return wrap

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<section class="container">
+	<div class="row">
+		<div class="form-group col-md-6">
+			<label>Customer Name :</label>
+			<input type="text" class="form-control" value="{{ booking.cid }}" disabled>
+		</div>
+		<div class="form-group col-md-6">
+			<label>Vehicle No :</label>
+			<input type="text" class="form-control" value="{{ booking.vehicle_no }}" disabled>
+		</div>
+		<div class="form-group col-md-6">
+			<label>Bike Brand :</label>
+			<input type="text" class="form-control" value="{{ booking.brand|title }}" disabled>
+		</div>
+		<div class="form-group col-md-6">
+			<label>Status :</label>
+			<input type="text" class="form-control" value="{{ booking.status|title }}" disabled>
+		</div>
+		<div class="form-group col-md-6">
+			<label>Service Scheduled On :</label>
+			<input type="text" class="form-control" value="{{ booking.service_on }}" disabled>
+		</div>
+		<div class="form-group col-md-6">
+			<label>Booked On :</label>
+			<input type="text" class="form-control" value="{{ booking.booked_on }}" disabled>
+		</div>
+		<div class="form-group col-md-6">
+			<label>Delivered On :</label>
+			<input type="text" class="form-control" value="{{ booking.delivered_on }}" disabled>
+		</div>
+		<div class="form-group col-md-6">
+			<label>Marked As Ready By :</label>
+			<input type="text" class="form-control" value="{{ booking.ready_by }}-{{ booking.ready_by.get_user_type_display }}" disabled>
+		</div>
+		<div class="form-group col-md-6">
+			<label>Marked As Delivered By :</label>
+			<input type="text" class="form-control" value="{{ booking.delivered_by }}-{{ booking.delivered_by.get_user_type_display }}" disabled>
+		</div>
+		<div class="form-group col-md-6">
+			<label>Marked As Canceled By :</label>
+			<input type="text" class="form-control" value="{{ booking.canceled_by }}-{{ booking.canceled_by.get_user_type_display }}" disabled>
+		</div>
+		<div class="form-group col-md-6">
+	<form class="form" method="POST">
+		{% csrf_token %}
+		{{ form|crispy }}
+		{% if booking.status == "pending" %}
+		<label>Change Status To :</label>
+		<button type="submit" name="submit" value="canceled" class="btn btn-danger">Cancel Booking</button>
+		<button type="submit" name="submit" value="ready" class="btn btn-info">Ready For Delivery</button>
+		{% endif %}
+		{% if booking.status == "ready" %}
+		<label>Change Status To :</label>
+		<button type="submit" name="submit" value="delivered" class="btn btn-success">Delivered</button>
+		{% endif %}
+		</div>
+	</form>
+	</div>
+	<a href="{% url 'all-bookings' %}">Back To All Booking</a>
+</section>
+
+{% endblock %}

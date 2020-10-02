@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="container py-2">
+	<h2 class="my-4 color-slateblue text-center">My Bookings</h2>
+	<article class="row">
+		{% for mb in booking %}
+		<div class="col-md-6 col-lg-4">
+			<div class="card shadow">
+				<div class="card-header color-slateblue clearfix">
+					{{ mb.brand|title }}
+					<strong class="float-right">{{ mb.vehicle_no }}</strong>
+				</div>
+				<div class="card-body">
+					<p style="font-size: 110%;">
+						{% for s in mb.services.all %}
+						<span class="badge badge-primary bg-slateblue p-2">{{ s.name }}</span>
+						{% endfor %}
+					</p>
+					<p>Scheduled : {{ mb.service_on }}</p>
+					<p>Delivered : {{ mb.delivered_on|default:'------' }}</p>
+				</div>
+				<div class="card-footer color-slateblue clearfix">
+					<em>Total : {{ mb.amount|default:"TBD" }}</em>
+					<span class="float-right badge
+					{% if mb.status == 'delivered' %}
+						badge-success
+					{% elif mb.status == 'ready' %}
+						badge-info
+					{% elif mb.status == 'pending' %}
+						badge-warning
+					{% elif mb.status == 'canceled' %}
+						badge-danger
+					{% endif %}
+				 	p-2">{{ mb.status|title }}</span>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</article>
+</section>
+
+{% endblock %}

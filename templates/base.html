@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,11 +20,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <!-- animate css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Sansita+Swashed&family=Varela+Round&display=swap" rel="stylesheet">
     <!-- Custom Css -->
-    <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fontawesome/css/all.min.css' %}">
 
   {% block head %}
   {% endblock %}
@@ -33,16 +34,14 @@
     {% include 'navbar.html' %}
   </header>
 
-  <main>
+  <main style="min-height: 91vh">
     {% block content %}
     {% endblock %}
 
     {% include 'messages.html' %}
   </main>
-
-  <footer>
-    
-  </footer>
-
+    <footer>
+      {% include 'footer.html' %}
+    </footer>
 </body>
 </html>

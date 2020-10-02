@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from ownersapp.views import *
+from django.conf.urls import url
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url('^', include('django.contrib.auth.urls')),
+    path('superadmin/', admin.site.urls),
     path('',home,name="homepage"),
     path('accounts/',include('usersapp.urls')),
     path('admin/',include('ownersapp.urls')),

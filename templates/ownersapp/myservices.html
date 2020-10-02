@@ -4,20 +4,34 @@
 {% block content %}
 
 <section class="container table-responsive-sm">
+  {% if user.user_type == 1 %}
 	<article class="container my-3">
-		<button data-toggle="collapse" data-target="#addserviceform" class="btn btn-success">Create A New Service</button>
-		<div class="collapse" id="addserviceform">
-			<form method="POST" class="form">
-				{% csrf_token %}
-				<div class="col-6">
-					{{ form|crispy }}
-				</div>
-				<input type="submit" name="submit" value="Add" class="btn btn-success">
-			</form>
-		</div>
+		<button data-toggle="modal" data-target="#add_service" class="btn btn-success">Create A New Service</button>
+		<!-- Add Service Modal -->
+		<div class="modal fade" id="add_service">
+  			<div class="modal-dialog modal-dialog-centered">
+  				<div class="modal-content">
+  					<div class="modal-header">
+  						<h4 class="modal-title">Add New Service</h4>
+  						<button type="button" class="close" data-dismiss="modal">&times;</button>
+  					</div>
+  					<div class="modal-body">
+  					<form class="form" id="add_form" method="POST">
+  						{% csrf_token %}
+  						{{ form|crispy }}
+  					</form>
+  					</div>
+  					<div class="modal-footer">
+  						<input type="submit" name="submit" value="Add" class="btn btn-success" form="add_form">
+  						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
 	</article>
-	<table class="table">
-		<thead>
+  {% endif %}
+	<table class="table table-striped">
+		<thead class="thead-dark">
 			<tr>
 				<th>S.No</td>
 				<th>Service Name</td>
@@ -30,10 +44,57 @@
 				<td>{{ forloop.counter }}</td>
 				<td>{{ i.name }}</td>
 				<td class="text-center">
-					<a href="#" class="btn btn-danger">Delete</a>
-					<a href="#" class="btn btn-success">Edit</a>
+          {% if user.user_type == 1 %}
+					<button data-toggle="modal" data-target="#confirm_delete_{{ i.id }}" class="btn btn-danger d-none d-md-inline-block">
+            <i class="fas fa-trash"></i> Delete
+          </button>
+          <span class="fas fa-trash d-md-none" data-toggle="modal" data-target="#confirm_delete_{{ i.id }}" style="color:red"></span>
+          {% endif %}
+					<button data-toggle="modal" data-target="#edit_service_{{ i.id }}" class="btn btn-success d-none d-md-inline-block">
+            <i class="far fa-edit"></i> Edit
+          </button>
+          <span class="fas fa-edit text-success d-md-none mx-2" data-toggle="modal" data-target="#edit_service_{{ i.id }}"></span>
 				</td>
 			</tr>
+			<!-- Delete A Service  -->
+			<div class="modal fade" id="confirm_delete_{{ i.id }}">
+    			<div class="modal-dialog modal-dialog-centered">
+      				<div class="modal-content">
+        				<div class="modal-header">
+          					<h4 class="modal-title">Are you sure you want to delete</h4>
+          					<button type="button" class="close" data-dismiss="modal">&times;</button>
+        				</div>
+        				<div class="modal-footer">
+        					<a href="{% url 'delete-service' i.id %}" class="btn btn-success">Yes, Delete</a>
+          					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        				</div>
+      				</div>
+    			</div>
+  			</div>
+  			<!-- Edit Service -->
+  			<div class="modal fade" id="edit_service_{{ i.id }}">
+  				<div class="modal-dialog modal-dialog-centered">
+  					<form class="edit_form" method="POST" action="{% url 'edit-service' i.id %}">
+  					<div class="modal-content">
+  						<div class="modal-header">
+  							<h4 class="modal-title">Edit Service</h4>
+  							<button type="button" class="close" data-dismiss="modal">&times;</button>
+  						</div>
+  						<div class="modal-body">
+  							{% csrf_token %}
+  							<div class="form-group">
+  								<label for="name">Service Name :</label>
+  								<input type="text" name="name" class="form-control" value="{{i.name}}">
+  							</div>
+  						</div>
+  						<div class="modal-footer">
+  							<input type="submit" value="Edit" name="edit_form" class="btn btn-success">
+  							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+  						</div>
+  					</div>
+  					</form>
+  				</div>
+  			</div>
 			{% endfor %}
 		</tbody>
 	</table>
