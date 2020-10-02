@@ -80,16 +80,16 @@ The Emails are sent for the following purposes:
 ## Customizing Database
 The project has a SQLite DB with sample datasets for you to use. If you want to connect with MySQL the open the settings.py in the bike_service folder and uncomment the lines from 93 to 102.
 ```python
- DATABASES = {
-     "default": {
-         'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'databasename',
-         'USER': 'username',
-         'PASSWORD': 'password',
-         'HOST': 'localhost',
-         'PORT': '3306',
-     }
- }
+93  DATABASES = {
+94     "default": {
+95         'ENGINE': 'django.db.backends.mysql',
+96         'NAME': 'databasename',
+97         'USER': 'username',
+98         'PASSWORD': 'password',
+99         'HOST': 'localhost',
+100         'PORT': '3306',
+101     }
+102 }
 ```
 And to finally apply the schema in your DB apply the following command in the terminal from your project root (i.e bike_service_app)
 ```sh
