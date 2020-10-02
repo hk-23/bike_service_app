@@ -6,7 +6,7 @@
 <section class="container table-responsive-sm">
   {% if user.user_type == 1 %}
 	<article class="container my-3">
-		<button data-toggle="modal" data-target="#add_service" class="btn btn-success">Create A New Service</button>
+		<button data-toggle="modal" data-target="#add_service" class="btn btn-slateblue">Create A New Service</button>
 		<!-- Add Service Modal -->
 		<div class="modal fade" id="add_service">
   			<div class="modal-dialog modal-dialog-centered">
@@ -30,7 +30,8 @@
   		</div>
 	</article>
   {% endif %}
-	<table class="table table-striped">
+  <h2 class="color-slateblue text-center">My Services</h2>
+	<table class="table table-striped mt-3">
 		<thead class="thead-dark">
 			<tr>
 				<th>S.No</td>

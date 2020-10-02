@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import User
-from .forms import SignupForm,LoginForm
+from .forms import SignupForm,LoginForm,ProfileEditForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import make_password
 from .decorators import is_admin
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -21,7 +22,7 @@ def customer_signup(request):
 	}
 	return render(request,'usersapp/customer_signup.html',context=context)
 
-def customer_login(request):
+def login(request):
 	if request.user.is_authenticated:
 		return redirect('homepage')
 	myForm = LoginForm(request.POST or None)
@@ -50,7 +51,7 @@ def customer_login(request):
 	context = {
 		'form': myForm,
 	}
-	return render(request,'usersapp/customer_login.html',context=context)
+	return render(request,'usersapp/login.html',context=context)
 
 @is_admin
 def staff_signup(request):
@@ -68,3 +69,15 @@ def staff_signup(request):
 def logout_view(request):
 	logout(request)
 	return redirect('homepage')
+
+@login_required
+def profile_view(request):
+	instance = User.objects.get(id=request.user.id)
+	myForm = ProfileEditForm(request.POST or None,instance=instance)
+	if myForm.is_valid():
+		myForm.save()
+		return redirect('profile')
+	context = {
+		'form': myForm,
+	}
+	return render(request,'usersapp/profile_view.html',context=context)

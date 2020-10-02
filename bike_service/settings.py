@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '*ab2q-jj0un#_k-$)+y(=cw53cp9m5j_0p0%3(rq*%0s^127dl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -126,8 +126,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR/"static",]
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR/"static/",]
+
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'     #Development
 

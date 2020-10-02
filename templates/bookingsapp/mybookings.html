@@ -7,7 +7,7 @@
 	<article class="row">
 		{% for mb in booking %}
 		<div class="col-md-6 col-lg-4">
-			<div class="card shadow">
+			<div class="card shadow my-3">
 				<div class="card-header color-slateblue clearfix">
 					{{ mb.brand|title }}
 					<strong class="float-right">{{ mb.vehicle_no }}</strong>
@@ -15,7 +15,7 @@
 				<div class="card-body">
 					<p style="font-size: 110%;">
 						{% for s in mb.services.all %}
-						<span class="badge badge-primary bg-slateblue p-2">{{ s.name }}</span>
+						<span class="badge badge-primary bg-slateblue p-2 mt-1">{{ s.name }}</span>
 						{% endfor %}
 					</p>
 					<p>Scheduled : {{ mb.service_on }}</p>

@@ -9,9 +9,11 @@
 		<div class="col-md-6 ">
 			<h2 class="color-slateblue text-center text-md-left">Staff Details</h2>
 		</div>
+		{% if user.user_type == 1 %}
 		<div class="col-md-6 ">
 			<button data-toggle="modal" data-target="#staff_signup" class="btn btn-success d-none d-md-flex ml-auto">Create New Staff Account</button>
 		</div>
+		{% endif %}
 	</div>
 	<div class="row">
 		{% for s in staff %}
@@ -27,7 +29,9 @@
 		</div>
 		{% endfor %}
 	</div>
+	{% if user.user_type == 1 %}
 	<button data-toggle="modal" data-target="#staff_signup" class="btn btn-success d-md-none">Create New Staff Account</button>
+	{% endif %}
 </section>
 
 <div class="modal fade" id="staff_signup">

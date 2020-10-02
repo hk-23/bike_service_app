@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<section class="container">
+	<h2 class="color-slateblue text-center my-3">Profile view</h2>
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+			<form method="POST">
+				{% csrf_token %}
+				{{ form|crispy }}
+				<input type="submit" value="Update" class="btn btn-slateblue">
+				<a href="{% url 'homepage' %}" class="btn btn-secondary">Back To Home</a>
+			</form>
+			<button class="btn btn-outline-slateblue mt-4">Change Password</button>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

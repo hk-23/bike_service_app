@@ -4,8 +4,9 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
 	path('signup/',customer_signup,name='signup'),
-	path('login/',customer_login,name='login'),
+	path('login/',login,name='login'),
 	path('logout/',logout_view,name='logout'),
+	path('profile/',profile_view,name='profile'),
 	path('staff/signup',staff_signup,name='staff_signup'),
 	# path('change-password/', auth_views.PasswordChangeView.as_view(),name="password_change"),
 	# path('reset-password/', auth_views.PasswordResetView.as_view(),name="password_reset"),

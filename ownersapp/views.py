@@ -28,7 +28,7 @@ def myservices_view(request):
 		if request.user.user_type == 1:
 			myForm.save()
 		else:
-			messages.info(request,'Staffs cannot Add a new Service')
+			messages.info(request,'Staffs cannot Add a new Service. Only Admin Can Add New Service')
 	context = {
 		'form': myForm,
 		'myservices': myservices,
@@ -92,7 +92,7 @@ def editbookings(request,id):
 	}
 	return render(request,'ownersapp/edit_bookings.html',context=context)
 
-@is_admin
+@is_staff
 def staff_details_view(request):
 	staff_obj = User.objects.filter(user_type=2)
 	myForm = SignupForm(request.POST or None)

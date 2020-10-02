@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .forms import *
 from usersapp.models import User
 from usersapp.decorators import *
@@ -11,12 +11,13 @@ from django.core.mail import send_mail
 def BookingView(request):
 	myForm = BookingForm(request.POST or None)
 	if myForm.is_valid():
-		# book_obj = myForm.save(commit=False)
-		# book_obj.cid = User.objects.get(id=request.user.id)
-		# book_obj.save()
-		# myForm.save_m2m()
+		book_obj = myForm.save(commit=False)
+		book_obj.cid = User.objects.get(id=request.user.id)
+		book_obj.save()
+		myForm.save_m2m()
 		messages.success(request,"Booking Successfully Completed")
 		send_mail_to_admin();
+		return redirect('mybookings')
 	context = {
 		'form': myForm,
 	}
@@ -24,7 +25,7 @@ def BookingView(request):
 
 @is_customer
 def MyBookings(request):
-	book_obj = Booking.objects.filter(cid=request.user.id)
+	book_obj = Booking.objects.filter(cid=request.user.id).order_by('booked_on').reverse()
 	context = {
 		'booking': book_obj,
 	}
