@@ -10,7 +10,9 @@ from django.core.mail import send_mail
 @is_customer
 def BookingView(request):
 	myForm = BookingForm(request.POST or None)
+	print('its working')
 	if myForm.is_valid():
+		print('itsvalid')
 		book_obj = myForm.save(commit=False)
 		book_obj.cid = User.objects.get(id=request.user.id)
 		book_obj.save()
