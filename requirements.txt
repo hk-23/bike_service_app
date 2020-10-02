@@ -1,0 +1,4 @@
+Django==3.1.1
+django-crispy-forms==1.9.2
+django-mysql==3.8.1
+django-static-fontawesome==5.14.0.0

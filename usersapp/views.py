@@ -22,7 +22,7 @@ def customer_signup(request):
 	}
 	return render(request,'usersapp/customer_signup.html',context=context)
 
-def login(request):
+def user_login(request):
 	if request.user.is_authenticated:
 		return redirect('homepage')
 	myForm = LoginForm(request.POST or None)

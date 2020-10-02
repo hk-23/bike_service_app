@@ -106,9 +106,7 @@ Since you have Migrated to a new database you have to create an Admin Account to
 $ python manage.py createsuperuser
 ```
 
-After creating the superuser visit https://localhost:8000/superadmin and login using the credentials created by you at the previous step. Here your can create the Admin Account.
-
-**PS:** The Superuser is used for the developers to manipulate the database and for develpopment purpose only. The superuser should not be mixed the the Application level User Types.
+After creating the Admin user visit https://localhost:8000/admin and login using the credentials created by you at the previous step.
 
 ## Customizing Emails
 Emails are for now only viewed in the terminal but in realtime its not the case. To enable sending email actually to the users, you will need an SMTP server with the following credentials
