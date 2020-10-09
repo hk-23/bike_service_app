@@ -7,11 +7,11 @@
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-slateblue-2">
         <a href="#" class="navbar-brand">
-            <img class="rounded-lg" src="{% static 'img/bike-logo.PNG' %}" alt="af logo" style="width: 50px;height: auto;">
+            <img class="rounded-lg" src="{% static 'img/bike-logo.png' %}" alt="af logo" style="width: 50px;height: auto;">
         </a>
         <span class="text-white lora">Hudson Sparklers</span>
         <!-- Toggler/collapsibe Button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menubar">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menubar" aria-label="navbar_toggler" >
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="menubar">
@@ -51,10 +51,10 @@
                         {{ user.get_short_name|default:"Guest"|title }}
                     </a>
                     <div class="dropdown-menu">
-                        <a href="{% url 'profile' %}" class="dropdown-item">
+                        <a href="{% url 'profile' %}" class="dropdown-item" aria-label="profile_icon">
                             <i class="fas fa-user"></i> Profile
                         </a>
-                        <a href="{% url 'logout' %}" class="dropdown-item">
+                        <a href="{% url 'logout' %}" class="dropdown-item" aria-label="logout_icon">
                             <i class="fas fa-sign-out-alt"></i> Logout
                         </a>
                     </div>

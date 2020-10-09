@@ -81,3 +81,19 @@ def profile_view(request):
 		'form': myForm,
 	}
 	return render(request,'usersapp/profile_view.html',context=context)
+
+def error_404(request,exception):
+	data = {}
+	return render(request,'custom_pages/404.html',status=404)
+
+def error_500(request):
+	data = {}
+	return render(request,'custom_pages/500.html',status=500)
+
+def error_400(request,exception):
+	data = {}
+	return render(request,'custom_pages/400.html',status=400)
+
+def error_403(request,exception):
+	data = {}
+	return render(request,'custom_pages/403.html',status=403)

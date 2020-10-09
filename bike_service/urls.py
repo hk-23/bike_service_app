@@ -27,3 +27,8 @@ urlpatterns = [
     path('admin/',include('ownersapp.urls')),
     path('booking/',include('bookingsapp.urls')),
 ]
+
+handler404 = 'usersapp.views.error_404'
+handler500 = 'usersapp.views.error_500'
+handler403 = 'usersapp.views.error_403'
+handler400 = 'usersapp.views.error_400'

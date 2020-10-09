@@ -13,7 +13,6 @@ from usersapp.decorators import is_staff,is_admin
 
 # Create your views here.
 def home(request):
-	print(redirect('login').url)
 	return render(request,'home.html')
 
 @is_staff
