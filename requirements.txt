@@ -3,3 +3,4 @@ django-crispy-forms==1.9.2
 django-mysql==3.8.1
 django-static-fontawesome==5.14.0.0
 whitenoise==5.2.0
+gunicorn==21.2.0
