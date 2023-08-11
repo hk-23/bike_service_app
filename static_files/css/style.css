@@ -1,0 +1,203 @@
+html {
+	scroll-behavior: smooth;
+}
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	font-family: 'Roboto Slab', serif !important;
+}
+.patua {
+		font-family: 'Sansita Swashed', cursive;
+}
+.lora {
+	font-family: 'Varela Round', sans-serif;
+	font-size: 120%;
+}
+.peddana {
+	font-family: 'Roboto Slab', serif;
+}
+.unstyled-link {
+	text-decoration: none;
+	color:inherit;
+}
+.unstyled-link:hover {
+	text-decoration: none;
+	color:inherit;
+}
+
+.bg-slateblue {
+	background-color: slateblue;
+}
+
+.bg-slateblue-1 {
+	background-color: #8E44AD;
+}
+
+.bg-slateblue-2 {
+	background-color: #5E35B1;
+}
+.bg-slateblue-3 {
+	background-color: #673AB7;
+}
+.bg-slateblue-4 {
+	background-color: #7E57C2;
+}
+
+.color-slateblue {
+	color: slateblue;
+}
+
+
+.ba-slateblue-s {
+	border: 1.5px solid slateblue;
+}
+.bt-slateblue-s {
+	border-top: 1.5px solid slateblue;
+}
+.br-slateblue-s {
+	border-right: 1.5px solid slateblue;
+}
+.bl-slateblue-s {
+	border-left: 1.5px solid slateblue;
+}
+.bb-slateblue-s {
+	border-bottom: 1.5px solid slateblue;
+}
+
+.ba-slateblue-sm {
+	border: 2px solid slateblue;
+}
+.bt-slateblue-sm {
+	border-top: 2px solid slateblue;
+}
+.br-slateblue-sm {
+	border-right: 2px solid slateblue;
+}
+.bl-slateblue-sm {
+	border-left: 2px solid slateblue;
+}
+.bb-slateblue-sm {
+	border-bottom: 2px solid slateblue;
+}
+
+.ba-slateblue {
+	border: 3px solid slateblue;
+}
+.bt-slateblue {
+	border-top: 3px solid slateblue;
+}
+.br-slateblue {
+	border-right: 3px solid slateblue;
+}
+.bl-slateblue {
+	border-left: 3px solid slateblue;
+}
+.bb-slateblue {
+	border-bottom: 3px solid slateblue;
+}
+
+.ba-slateblue-lg {
+	border: 4px solid slateblue;
+}
+.bt-slateblue-lg {
+	border-top: 4px solid slateblue;
+}
+.br-slateblue-lg {
+	border-right: 4px solid slateblue;
+}
+.bl-slateblue-lg {
+	border-left: 4px solid slateblue;
+}
+.bb-slateblue-lg {
+	border-bottom: 4px solid slateblue;
+}
+
+
+
+.shadow-slateblue-sm {
+  box-shadow: 0 0.125rem 0.25rem slateblue !important;
+}
+
+.shadow-slateblue {
+  box-shadow: 0 0.2rem 1rem slateblue !important;
+}
+
+.shadow-slateblue-lg {
+  box-shadow: 0 1rem 3rem slateblue !important;
+}
+
+
+a.bg-slateblue:hover, a.bg-slateblue:focus,
+button.bg-slateblue:hover,
+button.bg-slateblue:focus {
+  background-color: #0062cc !important;
+}
+
+.btn-slateblue {
+  color: #fff!important;
+  background-color: slateblue;
+  border-color: slateblue;
+}
+
+.btn-slateblue:hover {
+  color: #fff;
+  background-color: #5E35B1;
+  border-color: #5E35B1;
+}
+
+.btn-slateblue:focus, .btn-slateblue.focus {
+  box-shadow: 0 0 0 0.2rem rgba(106,90,205,0.5);
+}
+
+.btn-slateblue.disabled, .btn-slateblue:disabled {
+  color: #fff;
+  background-color: #7E57C2;
+  border-color: #7E57C2;
+}
+
+.btn-slateblue:not(:disabled):not(.disabled):active, .btn-slateblue:not(:disabled):not(.disabled).active,
+.show > .btn-slateblue.dropdown-toggle {
+  color: #fff;
+  background-color: slateblue;
+  border-color: slateblue!important;
+}
+
+.btn-slateblue:not(:disabled):not(.disabled):active:focus, .btn-slateblue:not(:disabled):not(.disabled).active:focus,
+.show > .btn-slateblue.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(106,90,205,0.5);
+}
+
+.btn-outline-slateblue {
+  color: slateblue;
+  border-color: slateblue;
+}
+
+.btn-outline-slateblue:hover {
+  color: #fff!important;
+  background-color: slateblue!important;
+  border-color: slateblue!important;
+}
+
+.btn-outline-slateblue:focus, .btn-outline-slateblue.focus {
+  box-shadow: 0 0 0 0.2rem rgba(106,90,205,0.5)!important;
+}
+
+.btn-outline-slateblue.disabled, .btn-outline-slateblue:disabled {
+  color: slateblue!important;
+  background-color: transparent!important;
+}
+
+.btn-outline-slateblue:not(:disabled):not(.disabled):active, .btn-outline-slateblue:not(:disabled):not(.disabled).active,
+.show > .btn-outline-slateblue.dropdown-toggle {
+  color: #fff!important;
+  background-color: slateblue!important;
+  border-color: slateblue!important;
+}
+
+.btn-outline-slateblue:not(:disabled):not(.disabled):active:focus, .btn-outline-slateblue:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-slateblue.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(106,90,205,0.5)!important;
+}
